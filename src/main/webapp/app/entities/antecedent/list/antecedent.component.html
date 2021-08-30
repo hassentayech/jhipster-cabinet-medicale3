@@ -1,0 +1,90 @@
+<div>
+  <h2 id="page-heading" data-cy="AntecedentHeading">
+    <span>Antecedents</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-antecedent"
+        [routerLink]="['/antecedent/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new Antecedent </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="antecedents?.length === 0">
+    <span>No antecedents found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="antecedents && antecedents.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span>ID</span></th>
+          <th scope="col"><span>Type</span></th>
+          <th scope="col"><span>Periode</span></th>
+          <th scope="col"><span>Antecedent</span></th>
+          <th scope="col"><span>Traitement</span></th>
+          <th scope="col"><span>Patient</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let antecedent of antecedents; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/antecedent', antecedent.id, 'view']">{{ antecedent.id }}</a>
+          </td>
+          <td>{{ antecedent.type }}</td>
+          <td>{{ antecedent.periode }}</td>
+          <td>{{ antecedent.antecedent }}</td>
+          <td>{{ antecedent.traitement }}</td>
+          <td>
+            <div *ngIf="antecedent.patient">
+              <a [routerLink]="['/patient', antecedent.patient?.id, 'view']">{{ antecedent.patient?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/antecedent', antecedent.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/antecedent', antecedent.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(antecedent)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

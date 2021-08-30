@@ -1,0 +1,34 @@
+{
+  "name": "Certificat",
+  "fields": [
+    {
+      "fieldName": "nbrJours",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "visite",
+      "otherEntityRelationshipName": "certificat",
+      "relationshipValidateRules": "required",
+      "relationshipName": "visite",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "certificat",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210830145100"
+}

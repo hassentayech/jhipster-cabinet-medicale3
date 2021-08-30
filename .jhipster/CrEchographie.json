@@ -1,0 +1,83 @@
+{
+  "name": "CrEchographie",
+  "fields": [
+    {
+      "fieldName": "aspectFoie",
+      "fieldType": "EchoAspect",
+      "fieldValues": "TAILLE_ECHOSTRUCURE_NORMALE,TAILLE_AUGMENTEE,DIFFICILE_VISUALISER,ANORMALITE"
+    },
+    {
+      "fieldName": "observationFoie",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "aspectVesicule",
+      "fieldType": "EchoAspect",
+      "fieldValues": "TAILLE_ECHOSTRUCURE_NORMALE,TAILLE_AUGMENTEE,DIFFICILE_VISUALISER,ANORMALITE"
+    },
+    {
+      "fieldName": "observationVesicule",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "aspectTrocVoieVeine",
+      "fieldType": "EchoAspect",
+      "fieldValues": "TAILLE_ECHOSTRUCURE_NORMALE,TAILLE_AUGMENTEE,DIFFICILE_VISUALISER,ANORMALITE"
+    },
+    {
+      "fieldName": "observationTrocVoieVeine",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "aspectReins",
+      "fieldType": "EchoAspect",
+      "fieldValues": "TAILLE_ECHOSTRUCURE_NORMALE,TAILLE_AUGMENTEE,DIFFICILE_VISUALISER,ANORMALITE"
+    },
+    {
+      "fieldName": "observationReins",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "aspectRate",
+      "fieldType": "EchoAspect",
+      "fieldValues": "TAILLE_ECHOSTRUCURE_NORMALE,TAILLE_AUGMENTEE,DIFFICILE_VISUALISER,ANORMALITE"
+    },
+    {
+      "fieldName": "observationRate",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "aspectPancreas",
+      "fieldType": "EchoAspect",
+      "fieldValues": "TAILLE_ECHOSTRUCURE_NORMALE,TAILLE_AUGMENTEE,DIFFICILE_VISUALISER,ANORMALITE"
+    },
+    {
+      "fieldName": "observationPancreas",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "autreObservation",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "visite",
+      "otherEntityRelationshipName": "crEchographie",
+      "relationshipValidateRules": "required",
+      "relationshipName": "visite",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "cr_echographie",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210830145101"
+}

@@ -1,0 +1,200 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-cr-echographie-heading" data-cy="CrEchographieCreateUpdateHeading">Create or edit a Cr Echographie</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_aspectFoie">Aspect Foie</label>
+          <select class="form-control" name="aspectFoie" formControlName="aspectFoie" id="field_aspectFoie" data-cy="aspectFoie">
+            <option [ngValue]="null"></option>
+            <option value="TAILLE_ECHOSTRUCURE_NORMALE">TAILLE_ECHOSTRUCURE_NORMALE</option>
+            <option value="TAILLE_AUGMENTEE">TAILLE_AUGMENTEE</option>
+            <option value="DIFFICILE_VISUALISER">DIFFICILE_VISUALISER</option>
+            <option value="ANORMALITE">ANORMALITE</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_observationFoie">Observation Foie</label>
+          <input
+            type="text"
+            class="form-control"
+            name="observationFoie"
+            id="field_observationFoie"
+            data-cy="observationFoie"
+            formControlName="observationFoie"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_aspectVesicule">Aspect Vesicule</label>
+          <select
+            class="form-control"
+            name="aspectVesicule"
+            formControlName="aspectVesicule"
+            id="field_aspectVesicule"
+            data-cy="aspectVesicule"
+          >
+            <option [ngValue]="null"></option>
+            <option value="TAILLE_ECHOSTRUCURE_NORMALE">TAILLE_ECHOSTRUCURE_NORMALE</option>
+            <option value="TAILLE_AUGMENTEE">TAILLE_AUGMENTEE</option>
+            <option value="DIFFICILE_VISUALISER">DIFFICILE_VISUALISER</option>
+            <option value="ANORMALITE">ANORMALITE</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_observationVesicule">Observation Vesicule</label>
+          <input
+            type="text"
+            class="form-control"
+            name="observationVesicule"
+            id="field_observationVesicule"
+            data-cy="observationVesicule"
+            formControlName="observationVesicule"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_aspectTrocVoieVeine">Aspect Troc Voie Veine</label>
+          <select
+            class="form-control"
+            name="aspectTrocVoieVeine"
+            formControlName="aspectTrocVoieVeine"
+            id="field_aspectTrocVoieVeine"
+            data-cy="aspectTrocVoieVeine"
+          >
+            <option [ngValue]="null"></option>
+            <option value="TAILLE_ECHOSTRUCURE_NORMALE">TAILLE_ECHOSTRUCURE_NORMALE</option>
+            <option value="TAILLE_AUGMENTEE">TAILLE_AUGMENTEE</option>
+            <option value="DIFFICILE_VISUALISER">DIFFICILE_VISUALISER</option>
+            <option value="ANORMALITE">ANORMALITE</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_observationTrocVoieVeine">Observation Troc Voie Veine</label>
+          <input
+            type="text"
+            class="form-control"
+            name="observationTrocVoieVeine"
+            id="field_observationTrocVoieVeine"
+            data-cy="observationTrocVoieVeine"
+            formControlName="observationTrocVoieVeine"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_aspectReins">Aspect Reins</label>
+          <select class="form-control" name="aspectReins" formControlName="aspectReins" id="field_aspectReins" data-cy="aspectReins">
+            <option [ngValue]="null"></option>
+            <option value="TAILLE_ECHOSTRUCURE_NORMALE">TAILLE_ECHOSTRUCURE_NORMALE</option>
+            <option value="TAILLE_AUGMENTEE">TAILLE_AUGMENTEE</option>
+            <option value="DIFFICILE_VISUALISER">DIFFICILE_VISUALISER</option>
+            <option value="ANORMALITE">ANORMALITE</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_observationReins">Observation Reins</label>
+          <input
+            type="text"
+            class="form-control"
+            name="observationReins"
+            id="field_observationReins"
+            data-cy="observationReins"
+            formControlName="observationReins"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_aspectRate">Aspect Rate</label>
+          <select class="form-control" name="aspectRate" formControlName="aspectRate" id="field_aspectRate" data-cy="aspectRate">
+            <option [ngValue]="null"></option>
+            <option value="TAILLE_ECHOSTRUCURE_NORMALE">TAILLE_ECHOSTRUCURE_NORMALE</option>
+            <option value="TAILLE_AUGMENTEE">TAILLE_AUGMENTEE</option>
+            <option value="DIFFICILE_VISUALISER">DIFFICILE_VISUALISER</option>
+            <option value="ANORMALITE">ANORMALITE</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_observationRate">Observation Rate</label>
+          <input
+            type="text"
+            class="form-control"
+            name="observationRate"
+            id="field_observationRate"
+            data-cy="observationRate"
+            formControlName="observationRate"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_aspectPancreas">Aspect Pancreas</label>
+          <select
+            class="form-control"
+            name="aspectPancreas"
+            formControlName="aspectPancreas"
+            id="field_aspectPancreas"
+            data-cy="aspectPancreas"
+          >
+            <option [ngValue]="null"></option>
+            <option value="TAILLE_ECHOSTRUCURE_NORMALE">TAILLE_ECHOSTRUCURE_NORMALE</option>
+            <option value="TAILLE_AUGMENTEE">TAILLE_AUGMENTEE</option>
+            <option value="DIFFICILE_VISUALISER">DIFFICILE_VISUALISER</option>
+            <option value="ANORMALITE">ANORMALITE</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_observationPancreas">Observation Pancreas</label>
+          <input
+            type="text"
+            class="form-control"
+            name="observationPancreas"
+            id="field_observationPancreas"
+            data-cy="observationPancreas"
+            formControlName="observationPancreas"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_autreObservation">Autre Observation</label>
+          <input
+            type="text"
+            class="form-control"
+            name="autreObservation"
+            id="field_autreObservation"
+            data-cy="autreObservation"
+            formControlName="autreObservation"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

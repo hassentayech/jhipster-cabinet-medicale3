@@ -1,0 +1,11 @@
+id;cas;depuis;histoire;remarques;etat_actuel;mode_facturation;prix_forfaitaire;patient_id
+1;Market Shilling;2021-08-30;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;TRAITE;FORFAIT;14090;1
+2;blue;2021-08-29;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;ADRESSE;FORFAIT;87214;2
+3;Chief azure;2021-08-29;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;ADRESSE;VISITES;59000;3
+4;calculating;2021-08-30;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;TRAITE;VISITES;39134;4
+5;Berkshire;2021-08-29;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;ADRESSE;VISITES;40020;5
+6;zero Knoll;2021-08-30;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;TRAITE;FORFAIT;96426;6
+7;Bacon Ocean Delaware;2021-08-30;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;ADRESSE;VISITES;10150;7
+8;Road Practical;2021-08-29;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;TRAITE;VISITES;93110;8
+9;Licensed;2021-08-29;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;TRAITE;FORFAIT;41814;9
+10;Rupee olive;2021-08-30;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;ADRESSE;VISITES;21119;10

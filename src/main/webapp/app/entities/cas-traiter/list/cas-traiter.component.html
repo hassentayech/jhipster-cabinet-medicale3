@@ -1,0 +1,96 @@
+<div>
+  <h2 id="page-heading" data-cy="CasTraiterHeading">
+    <span>Cas Traiters</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-cas-traiter"
+        [routerLink]="['/cas-traiter/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new Cas Traiter </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="casTraiters?.length === 0">
+    <span>No casTraiters found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="casTraiters && casTraiters.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span>ID</span></th>
+          <th scope="col"><span>Cas</span></th>
+          <th scope="col"><span>Depuis</span></th>
+          <th scope="col"><span>Histoire</span></th>
+          <th scope="col"><span>Remarques</span></th>
+          <th scope="col"><span>Etat Actuel</span></th>
+          <th scope="col"><span>Mode Facturation</span></th>
+          <th scope="col"><span>Prix Forfaitaire</span></th>
+          <th scope="col"><span>Patient</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let casTraiter of casTraiters; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/cas-traiter', casTraiter.id, 'view']">{{ casTraiter.id }}</a>
+          </td>
+          <td>{{ casTraiter.cas }}</td>
+          <td>{{ casTraiter.depuis | formatMediumDate }}</td>
+          <td>{{ casTraiter.histoire }}</td>
+          <td>{{ casTraiter.remarques }}</td>
+          <td>{{ casTraiter.etatActuel }}</td>
+          <td>{{ casTraiter.modeFacturation }}</td>
+          <td>{{ casTraiter.prixForfaitaire }}</td>
+          <td>
+            <div *ngIf="casTraiter.patient">
+              <a [routerLink]="['/patient', casTraiter.patient?.id, 'view']">{{ casTraiter.patient?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/cas-traiter', casTraiter.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/cas-traiter', casTraiter.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(casTraiter)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

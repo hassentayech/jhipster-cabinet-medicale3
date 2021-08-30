@@ -1,0 +1,74 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="visite">
+      <h2 data-cy="visiteDetailsHeading"><span>Visite</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ visite.id }}</span>
+        </dd>
+        <dt><span>Control</span></dt>
+        <dd>
+          <span>{{ visite.control }}</span>
+        </dd>
+        <dt><span>Date</span></dt>
+        <dd>
+          <span>{{ visite.date | formatMediumDate }}</span>
+        </dd>
+        <dt><span>Motif</span></dt>
+        <dd>
+          <span>{{ visite.motif }}</span>
+        </dd>
+        <dt><span>Interrogatoire</span></dt>
+        <dd>
+          <span>{{ visite.interrogatoire }}</span>
+        </dd>
+        <dt><span>Examen</span></dt>
+        <dd>
+          <span>{{ visite.examen }}</span>
+        </dd>
+        <dt><span>Conclusion</span></dt>
+        <dd>
+          <span>{{ visite.conclusion }}</span>
+        </dd>
+        <dt><span>Honoraire</span></dt>
+        <dd>
+          <span>{{ visite.honoraire }}</span>
+        </dd>
+        <dt><span>Certificat</span></dt>
+        <dd>
+          <div *ngIf="visite.certificat">
+            <a [routerLink]="['/certificat', visite.certificat?.id, 'view']">{{ visite.certificat?.id }}</a>
+          </div>
+        </dd>
+        <dt><span>Cr Echographie</span></dt>
+        <dd>
+          <div *ngIf="visite.crEchographie">
+            <a [routerLink]="['/cr-echographie', visite.crEchographie?.id, 'view']">{{ visite.crEchographie?.id }}</a>
+          </div>
+        </dd>
+        <dt><span>Cas Traiter</span></dt>
+        <dd>
+          <div *ngIf="visite.casTraiter">
+            <a [routerLink]="['/cas-traiter', visite.casTraiter?.id, 'view']">{{ visite.casTraiter?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/visite', visite.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="prescription">
+      <h2 data-cy="prescriptionDetailsHeading"><span>Prescription</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ prescription.id }}</span>
+        </dd>
+        <dt><span>Prescription</span></dt>
+        <dd>
+          <span>{{ prescription.prescription }}</span>
+        </dd>
+        <dt><span>Prise</span></dt>
+        <dd>
+          <span>{{ prescription.prise }}</span>
+        </dd>
+        <dt><span>Ordonnance</span></dt>
+        <dd>
+          <div *ngIf="prescription.ordonnance">
+            <a [routerLink]="['/ordonnance', prescription.ordonnance?.id, 'view']">{{ prescription.ordonnance?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/prescription', prescription.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

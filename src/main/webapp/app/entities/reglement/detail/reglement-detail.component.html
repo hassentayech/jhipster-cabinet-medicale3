@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="reglement">
+      <h2 data-cy="reglementDetailsHeading"><span>Reglement</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ reglement.id }}</span>
+        </dd>
+        <dt><span>Date</span></dt>
+        <dd>
+          <span>{{ reglement.date | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Valeur</span></dt>
+        <dd>
+          <span>{{ reglement.valeur }}</span>
+        </dd>
+        <dt><span>Type Payement</span></dt>
+        <dd>
+          <span>{{ reglement.typePayement }}</span>
+        </dd>
+        <dt><span>Remarque</span></dt>
+        <dd>
+          <span>{{ reglement.remarque }}</span>
+        </dd>
+        <dt><span>Visite</span></dt>
+        <dd>
+          <div *ngIf="reglement.visite">
+            <a [routerLink]="['/visite', reglement.visite?.id, 'view']">{{ reglement.visite?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/reglement', reglement.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

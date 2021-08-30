@@ -1,0 +1,29 @@
+{
+  "name": "Ordonnance",
+  "fields": [],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "prescription",
+      "otherEntityRelationshipName": "ordonnance",
+      "relationshipName": "prescription"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "visite",
+      "otherEntityRelationshipName": "ordonnance",
+      "relationshipValidateRules": "required",
+      "relationshipName": "visite"
+    }
+  ],
+  "entityTableName": "ordonnance",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210830145058"
+}

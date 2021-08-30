@@ -1,0 +1,157 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-visite-heading" data-cy="VisiteCreateUpdateHeading">Create or edit a Visite</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_control">Control</label>
+          <input type="checkbox" class="form-check" name="control" id="field_control" data-cy="control" formControlName="control" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_date">Date</label>
+          <div class="input-group">
+            <input
+              id="field_date"
+              data-cy="date"
+              type="text"
+              class="form-control"
+              name="date"
+              ngbDatepicker
+              #dateDp="ngbDatepicker"
+              formControlName="date"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_motif">Motif</label>
+          <input type="text" class="form-control" name="motif" id="field_motif" data-cy="motif" formControlName="motif" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_interrogatoire">Interrogatoire</label>
+          <textarea
+            class="form-control"
+            name="interrogatoire"
+            id="field_interrogatoire"
+            data-cy="interrogatoire"
+            formControlName="interrogatoire"
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_examen">Examen</label>
+          <textarea class="form-control" name="examen" id="field_examen" data-cy="examen" formControlName="examen"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_conclusion">Conclusion</label>
+          <textarea
+            class="form-control"
+            name="conclusion"
+            id="field_conclusion"
+            data-cy="conclusion"
+            formControlName="conclusion"
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_honoraire">Honoraire</label>
+          <input type="number" class="form-control" name="honoraire" id="field_honoraire" data-cy="honoraire" formControlName="honoraire" />
+          <div *ngIf="editForm.get('honoraire')!.invalid && (editForm.get('honoraire')!.dirty || editForm.get('honoraire')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('honoraire')?.errors?.required"> This field is required. </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('honoraire')?.errors?.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_certificat">Certificat</label>
+          <select class="form-control" id="field_certificat" data-cy="certificat" name="certificat" formControlName="certificat">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                certificatOption.id === editForm.get('certificat')!.value?.id ? editForm.get('certificat')!.value : certificatOption
+              "
+              *ngFor="let certificatOption of certificatsCollection; trackBy: trackCertificatById"
+            >
+              {{ certificatOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_crEchographie">Cr Echographie</label>
+          <select
+            class="form-control"
+            id="field_crEchographie"
+            data-cy="crEchographie"
+            name="crEchographie"
+            formControlName="crEchographie"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                crEchographieOption.id === editForm.get('crEchographie')!.value?.id
+                  ? editForm.get('crEchographie')!.value
+                  : crEchographieOption
+              "
+              *ngFor="let crEchographieOption of crEchographiesCollection; trackBy: trackCrEchographieById"
+            >
+              {{ crEchographieOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_casTraiter">Cas Traiter</label>
+          <select class="form-control" id="field_casTraiter" data-cy="casTraiter" name="casTraiter" formControlName="casTraiter">
+            <option *ngIf="!editForm.get('casTraiter')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="
+                casTraiterOption.id === editForm.get('casTraiter')!.value?.id ? editForm.get('casTraiter')!.value : casTraiterOption
+              "
+              *ngFor="let casTraiterOption of casTraitersSharedCollection; trackBy: trackCasTraiterById"
+            >
+              {{ casTraiterOption.id }}
+            </option>
+          </select>
+        </div>
+        <div
+          *ngIf="editForm.get(['casTraiter'])!.invalid && (editForm.get(['casTraiter'])!.dirty || editForm.get(['casTraiter'])!.touched)"
+        >
+          <small class="form-text text-danger" *ngIf="editForm.get(['casTraiter'])?.errors?.required"> This field is required. </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
