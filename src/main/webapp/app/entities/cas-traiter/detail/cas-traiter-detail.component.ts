@@ -16,6 +16,7 @@ export class CasTraiterDetailComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ casTraiter }) => {
       this.casTraiter = casTraiter;
+      console.warn(this.casTraiter);
     });
   }
 

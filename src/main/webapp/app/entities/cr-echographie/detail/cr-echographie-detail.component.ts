@@ -15,6 +15,7 @@ export class CrEchographieDetailComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ crEchographie }) => {
       this.crEchographie = crEchographie;
+      console.warn(this.crEchographie);
     });
   }
 

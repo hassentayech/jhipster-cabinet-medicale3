@@ -15,6 +15,7 @@ export class PrescriptionDetailComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ prescription }) => {
       this.prescription = prescription;
+      console.warn(this.prescription);
     });
   }
 

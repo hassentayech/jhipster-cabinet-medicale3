@@ -15,6 +15,7 @@ export class CertificatDetailComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ certificat }) => {
       this.certificat = certificat;
+      console.warn(this.certificat);
     });
   }
 

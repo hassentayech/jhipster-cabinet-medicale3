@@ -16,6 +16,7 @@ export class AntecedentDetailComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ antecedent }) => {
       this.antecedent = antecedent;
+      console.warn(this.antecedent);
     });
   }
 

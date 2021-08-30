@@ -15,6 +15,7 @@ export class ConstanteDetailComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ constante }) => {
       this.constante = constante;
+      console.warn(this.constante);
     });
   }
 

@@ -16,6 +16,7 @@ export class VisiteDetailComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ visite }) => {
       this.visite = visite;
+      console.warn(this.visite);
     });
   }
 

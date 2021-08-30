@@ -16,6 +16,7 @@ export class PatientDetailComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ patient }) => {
       this.patient = patient;
+      console.warn(this.patient);
     });
   }
 

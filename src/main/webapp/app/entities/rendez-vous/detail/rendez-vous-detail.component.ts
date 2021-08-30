@@ -15,6 +15,7 @@ export class RendezVousDetailComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ rendezVous }) => {
       this.rendezVous = rendezVous;
+      console.warn(this.rendezVous);
     });
   }
 

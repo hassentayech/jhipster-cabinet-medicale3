@@ -15,6 +15,7 @@ export class ReglementDetailComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ reglement }) => {
       this.reglement = reglement;
+      console.warn(this.reglement);
     });
   }
 
