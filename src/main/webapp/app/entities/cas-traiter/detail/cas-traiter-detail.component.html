@@ -1,0 +1,62 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="casTraiter">
+      <h2 data-cy="casTraiterDetailsHeading"><span>Cas Traiter</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ casTraiter.id }}</span>
+        </dd>
+        <dt><span>Cas</span></dt>
+        <dd>
+          <span>{{ casTraiter.cas }}</span>
+        </dd>
+        <dt><span>Depuis</span></dt>
+        <dd>
+          <span>{{ casTraiter.depuis | formatMediumDate }}</span>
+        </dd>
+        <dt><span>Histoire</span></dt>
+        <dd>
+          <span>{{ casTraiter.histoire }}</span>
+        </dd>
+        <dt><span>Remarques</span></dt>
+        <dd>
+          <span>{{ casTraiter.remarques }}</span>
+        </dd>
+        <dt><span>Etat Actuel</span></dt>
+        <dd>
+          <span>{{ casTraiter.etatActuel }}</span>
+        </dd>
+        <dt><span>Mode Facturation</span></dt>
+        <dd>
+          <span>{{ casTraiter.modeFacturation }}</span>
+        </dd>
+        <dt><span>Prix Forfaitaire</span></dt>
+        <dd>
+          <span>{{ casTraiter.prixForfaitaire }}</span>
+        </dd>
+        <dt><span>Patient</span></dt>
+        <dd>
+          <div *ngIf="casTraiter.patient">
+            <a [routerLink]="['/patient', casTraiter.patient?.id, 'view']">{{ casTraiter.patient?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/cas-traiter', casTraiter.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,114 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-rendez-vous-heading" data-cy="RendezVousCreateUpdateHeading">Create or edit a Rendez Vous</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_date">Date</label>
+          <div class="input-group">
+            <input
+              id="field_date"
+              data-cy="date"
+              type="text"
+              class="form-control"
+              name="date"
+              ngbDatepicker
+              #dateDp="ngbDatepicker"
+              formControlName="date"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+            </span>
+          </div>
+          <div *ngIf="editForm.get('date')!.invalid && (editForm.get('date')!.dirty || editForm.get('date')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('date')?.errors?.required"> This field is required. </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_trancheHoraire">Tranche Horaire</label>
+          <input
+            type="text"
+            class="form-control"
+            name="trancheHoraire"
+            id="field_trancheHoraire"
+            data-cy="trancheHoraire"
+            formControlName="trancheHoraire"
+          />
+          <div
+            *ngIf="
+              editForm.get('trancheHoraire')!.invalid && (editForm.get('trancheHoraire')!.dirty || editForm.get('trancheHoraire')!.touched)
+            "
+          >
+            <small class="form-text text-danger" *ngIf="editForm.get('trancheHoraire')?.errors?.required"> This field is required. </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_nbrTranche">Nbr Tranche</label>
+          <input
+            type="text"
+            class="form-control"
+            name="nbrTranche"
+            id="field_nbrTranche"
+            data-cy="nbrTranche"
+            formControlName="nbrTranche"
+          />
+          <div *ngIf="editForm.get('nbrTranche')!.invalid && (editForm.get('nbrTranche')!.dirty || editForm.get('nbrTranche')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('nbrTranche')?.errors?.required"> This field is required. </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_motif">Motif</label>
+          <input type="text" class="form-control" name="motif" id="field_motif" data-cy="motif" formControlName="motif" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_present">Present</label>
+          <input type="checkbox" class="form-check" name="present" id="field_present" data-cy="present" formControlName="present" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_patient">Patient</label>
+          <select class="form-control" id="field_patient" data-cy="patient" name="patient" formControlName="patient">
+            <option *ngIf="!editForm.get('patient')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="patientOption.id === editForm.get('patient')!.value?.id ? editForm.get('patient')!.value : patientOption"
+              *ngFor="let patientOption of patientsSharedCollection; trackBy: trackPatientById"
+            >
+              {{ patientOption.id }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['patient'])!.invalid && (editForm.get(['patient'])!.dirty || editForm.get(['patient'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['patient'])?.errors?.required"> This field is required. </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

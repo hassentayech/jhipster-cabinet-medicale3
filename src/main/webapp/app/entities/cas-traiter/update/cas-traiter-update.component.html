@@ -1,0 +1,137 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-cas-traiter-heading" data-cy="CasTraiterCreateUpdateHeading">Create or edit a Cas Traiter</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_cas">Cas</label>
+          <input type="text" class="form-control" name="cas" id="field_cas" data-cy="cas" formControlName="cas" />
+          <div *ngIf="editForm.get('cas')!.invalid && (editForm.get('cas')!.dirty || editForm.get('cas')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('cas')?.errors?.required"> This field is required. </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_depuis">Depuis</label>
+          <div class="input-group">
+            <input
+              id="field_depuis"
+              data-cy="depuis"
+              type="text"
+              class="form-control"
+              name="depuis"
+              ngbDatepicker
+              #depuisDp="ngbDatepicker"
+              formControlName="depuis"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="depuisDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+            </span>
+          </div>
+          <div *ngIf="editForm.get('depuis')!.invalid && (editForm.get('depuis')!.dirty || editForm.get('depuis')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('depuis')?.errors?.required"> This field is required. </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_histoire">Histoire</label>
+          <textarea class="form-control" name="histoire" id="field_histoire" data-cy="histoire" formControlName="histoire"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_remarques">Remarques</label>
+          <textarea class="form-control" name="remarques" id="field_remarques" data-cy="remarques" formControlName="remarques"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_etatActuel">Etat Actuel</label>
+          <select class="form-control" name="etatActuel" formControlName="etatActuel" id="field_etatActuel" data-cy="etatActuel">
+            <option [ngValue]="null"></option>
+            <option value="EN_TRAITEMENT">EN_TRAITEMENT</option>
+            <option value="TRAITE">TRAITE</option>
+            <option value="ADRESSE">ADRESSE</option>
+          </select>
+          <div *ngIf="editForm.get('etatActuel')!.invalid && (editForm.get('etatActuel')!.dirty || editForm.get('etatActuel')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('etatActuel')?.errors?.required"> This field is required. </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_modeFacturation">Mode Facturation</label>
+          <select
+            class="form-control"
+            name="modeFacturation"
+            formControlName="modeFacturation"
+            id="field_modeFacturation"
+            data-cy="modeFacturation"
+          >
+            <option [ngValue]="null"></option>
+            <option value="VISITES">VISITES</option>
+            <option value="ACTES">ACTES</option>
+            <option value="FORFAIT">FORFAIT</option>
+          </select>
+          <div
+            *ngIf="
+              editForm.get('modeFacturation')!.invalid &&
+              (editForm.get('modeFacturation')!.dirty || editForm.get('modeFacturation')!.touched)
+            "
+          >
+            <small class="form-text text-danger" *ngIf="editForm.get('modeFacturation')?.errors?.required"> This field is required. </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_prixForfaitaire">Prix Forfaitaire</label>
+          <input
+            type="number"
+            class="form-control"
+            name="prixForfaitaire"
+            id="field_prixForfaitaire"
+            data-cy="prixForfaitaire"
+            formControlName="prixForfaitaire"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_patient">Patient</label>
+          <select class="form-control" id="field_patient" data-cy="patient" name="patient" formControlName="patient">
+            <option *ngIf="!editForm.get('patient')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="patientOption.id === editForm.get('patient')!.value?.id ? editForm.get('patient')!.value : patientOption"
+              *ngFor="let patientOption of patientsSharedCollection; trackBy: trackPatientById"
+            >
+              {{ patientOption.id }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['patient'])!.invalid && (editForm.get(['patient'])!.dirty || editForm.get(['patient'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['patient'])?.errors?.required"> This field is required. </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

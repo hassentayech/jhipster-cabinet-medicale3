@@ -1,0 +1,11 @@
+id;control;date;motif;interrogatoire;examen;conclusion;honoraire;cas_traiter_id
+1;false;2021-08-30;transmitting;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;46284;1
+2;false;2021-08-29;Profit-focused Group;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;6432;2
+3;true;2021-08-30;payment invoice Marketing;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;8170;3
+4;true;2021-08-29;Vietnam navigate Visionary;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;82473;4
+5;true;2021-08-29;Designer Sleek Toys;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;44297;5
+6;false;2021-08-30;Cotton generate Grocery;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;84627;6
+7;false;2021-08-29;mesh Manager;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;83415;7
+8;false;2021-08-29;Account;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;91340;8
+9;true;2021-08-30;synergies Berkshire Loan;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;36496;9
+10;false;2021-08-29;Awesome Oman Music;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;75320;10

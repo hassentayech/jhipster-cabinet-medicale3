@@ -51,6 +51,25 @@ public class CacheConfiguration {
             createCache(cm, com.forticas.cabinet3.domain.User.class.getName());
             createCache(cm, com.forticas.cabinet3.domain.Authority.class.getName());
             createCache(cm, com.forticas.cabinet3.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.forticas.cabinet3.domain.Patient.class.getName());
+            createCache(cm, com.forticas.cabinet3.domain.Patient.class.getName() + ".rendezVous");
+            createCache(cm, com.forticas.cabinet3.domain.Patient.class.getName() + ".casTraiters");
+            createCache(cm, com.forticas.cabinet3.domain.Patient.class.getName() + ".constantes");
+            createCache(cm, com.forticas.cabinet3.domain.Patient.class.getName() + ".antecedents");
+            createCache(cm, com.forticas.cabinet3.domain.RendezVous.class.getName());
+            createCache(cm, com.forticas.cabinet3.domain.Antecedent.class.getName());
+            createCache(cm, com.forticas.cabinet3.domain.CasTraiter.class.getName());
+            createCache(cm, com.forticas.cabinet3.domain.CasTraiter.class.getName() + ".visites");
+            createCache(cm, com.forticas.cabinet3.domain.Visite.class.getName());
+            createCache(cm, com.forticas.cabinet3.domain.Visite.class.getName() + ".ordonnances");
+            createCache(cm, com.forticas.cabinet3.domain.Visite.class.getName() + ".reglements");
+            createCache(cm, com.forticas.cabinet3.domain.Constante.class.getName());
+            createCache(cm, com.forticas.cabinet3.domain.Ordonnance.class.getName());
+            createCache(cm, com.forticas.cabinet3.domain.Ordonnance.class.getName() + ".prescriptions");
+            createCache(cm, com.forticas.cabinet3.domain.Reglement.class.getName());
+            createCache(cm, com.forticas.cabinet3.domain.Certificat.class.getName());
+            createCache(cm, com.forticas.cabinet3.domain.CrEchographie.class.getName());
+            createCache(cm, com.forticas.cabinet3.domain.Prescription.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

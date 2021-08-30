@@ -1,0 +1,33 @@
+{
+  "name": "Prescription",
+  "fields": [
+    {
+      "fieldName": "prescription",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "prise",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "ordonnance",
+      "otherEntityRelationshipName": "prescription",
+      "relationshipValidateRules": "required",
+      "relationshipName": "ordonnance"
+    }
+  ],
+  "entityTableName": "prescription",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210830145127"
+}
