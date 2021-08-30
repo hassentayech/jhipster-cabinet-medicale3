@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity Visite.
+    -->
+    <changeSet id="20210830145056-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="certificat_id"
+                                 baseTableName="visite"
+                                 constraintName="fk_visite__certificat_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="certificat"/>
+
+        <addForeignKeyConstraint baseColumnNames="cr_echographie_id"
+                                 baseTableName="visite"
+                                 constraintName="fk_visite__cr_echographie_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cr_echographie"/>
+
+        <addForeignKeyConstraint baseColumnNames="cas_traiter_id"
+                                 baseTableName="visite"
+                                 constraintName="fk_visite__cas_traiter_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cas_traiter"/>
+    </changeSet>
+</databaseChangeLog>

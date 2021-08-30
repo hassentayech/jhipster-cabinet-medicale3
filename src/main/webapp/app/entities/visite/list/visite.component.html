@@ -1,0 +1,98 @@
+<div>
+  <h2 id="page-heading" data-cy="VisiteHeading">
+    <span>Visites</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-visite"
+        [routerLink]="['/visite/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new Visite </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="visites?.length === 0">
+    <span>No visites found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="visites && visites.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span>ID</span></th>
+          <th scope="col"><span>Control</span></th>
+          <th scope="col"><span>Date</span></th>
+          <th scope="col"><span>Motif</span></th>
+          <th scope="col"><span>Interrogatoire</span></th>
+          <th scope="col"><span>Examen</span></th>
+          <th scope="col"><span>Conclusion</span></th>
+          <th scope="col"><span>Honoraire</span></th>
+          <th scope="col"><span>Certificat</span></th>
+          <th scope="col"><span>Cr Echographie</span></th>
+          <th scope="col"><span>Cas Traiter</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let visite of visites; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/visite', visite.id, 'view']">{{ visite.id }}</a>
+          </td>
+          <td>{{ visite.control }}</td>
+          <td>{{ visite.date | formatMediumDate }}</td>
+          <td>{{ visite.motif }}</td>
+          <td>{{ visite.interrogatoire }}</td>
+          <td>{{ visite.examen }}</td>
+          <td>{{ visite.conclusion }}</td>
+          <td>{{ visite.honoraire }}</td>
+          <td>
+            <div *ngIf="visite.certificat">
+              <a [routerLink]="['/certificat', visite.certificat?.id, 'view']">{{ visite.certificat?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="visite.crEchographie">
+              <a [routerLink]="['/cr-echographie', visite.crEchographie?.id, 'view']">{{ visite.crEchographie?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="visite.casTraiter">
+              <a [routerLink]="['/cas-traiter', visite.casTraiter?.id, 'view']">{{ visite.casTraiter?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/visite', visite.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/visite', visite.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(visite)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

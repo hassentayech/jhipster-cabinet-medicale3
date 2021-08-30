@@ -43,7 +43,21 @@
     "devServerPort": 4200,
     "clientTheme": "none",
     "clientThemeVariant": "",
-    "reactive": false
+    "reactive": false,
+    "entities": [
+      "Patient",
+      "RendezVous",
+      "Antecedent",
+      "CasTraiter",
+      "Visite",
+      "Constante",
+      "Ordonnance",
+      "Reglement",
+      "Certificat",
+      "CrEchographie",
+      "Prescription"
+    ],
+    "lastLiquibaseTimestamp": 1630335062000
   },
   "git-provider": "GitHub",
   "git-company": "hassentayech",

@@ -1,0 +1,66 @@
+{
+  "name": "CasTraiter",
+  "fields": [
+    {
+      "fieldName": "cas",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "depuis",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "histoire",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "remarques",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "etatActuel",
+      "fieldType": "EtatActuel",
+      "fieldValues": "EN_TRAITEMENT,TRAITE,ADRESSE",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "modeFacturation",
+      "fieldType": "ModeFacturation",
+      "fieldValues": "VISITES,ACTES,FORFAIT",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "prixForfaitaire",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "visite",
+      "otherEntityRelationshipName": "casTraiter",
+      "relationshipName": "visite"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "patient",
+      "otherEntityRelationshipName": "casTraiter",
+      "relationshipValidateRules": "required",
+      "relationshipName": "patient"
+    }
+  ],
+  "entityTableName": "cas_traiter",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210830145055"
+}

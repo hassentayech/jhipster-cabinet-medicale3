@@ -1,0 +1,46 @@
+{
+  "name": "Antecedent",
+  "fields": [
+    {
+      "fieldName": "type",
+      "fieldType": "TypeAntecedent",
+      "fieldValues": "MEDICAL,CHIRURGICAL,FAMILIAL,GYNECO_OBSTETRIQUE,TOXIQUE",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "periode",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "antecedent",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "traitement",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "patient",
+      "otherEntityRelationshipName": "antecedent",
+      "relationshipValidateRules": "required",
+      "relationshipName": "patient"
+    }
+  ],
+  "entityTableName": "antecedent",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210830145054"
+}
