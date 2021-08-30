@@ -1,0 +1,70 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="constante">
+      <h2 data-cy="constanteDetailsHeading"><span>Constante</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ constante.id }}</span>
+        </dd>
+        <dt><span>Date</span></dt>
+        <dd>
+          <span>{{ constante.date | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Poid</span></dt>
+        <dd>
+          <span>{{ constante.poid }}</span>
+        </dd>
+        <dt><span>Taille</span></dt>
+        <dd>
+          <span>{{ constante.taille }}</span>
+        </dd>
+        <dt><span>Pas</span></dt>
+        <dd>
+          <span>{{ constante.pas }}</span>
+        </dd>
+        <dt><span>Pad</span></dt>
+        <dd>
+          <span>{{ constante.pad }}</span>
+        </dd>
+        <dt><span>Pouls</span></dt>
+        <dd>
+          <span>{{ constante.pouls }}</span>
+        </dd>
+        <dt><span>Temp</span></dt>
+        <dd>
+          <span>{{ constante.temp }}</span>
+        </dd>
+        <dt><span>Glycemie</span></dt>
+        <dd>
+          <span>{{ constante.glycemie }}</span>
+        </dd>
+        <dt><span>Cholesterol</span></dt>
+        <dd>
+          <span>{{ constante.cholesterol }}</span>
+        </dd>
+        <dt><span>Patient</span></dt>
+        <dd>
+          <div *ngIf="constante.patient">
+            <a [routerLink]="['/patient', constante.patient?.id, 'view']">{{ constante.patient?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/constante', constante.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

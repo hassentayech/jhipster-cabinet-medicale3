@@ -1,0 +1,116 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-constante-heading" data-cy="ConstanteCreateUpdateHeading">Create or edit a Constante</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_date">Date</label>
+          <div class="d-flex">
+            <input
+              id="field_date"
+              data-cy="date"
+              type="datetime-local"
+              class="form-control"
+              name="date"
+              formControlName="date"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div *ngIf="editForm.get('date')!.invalid && (editForm.get('date')!.dirty || editForm.get('date')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('date')?.errors?.required"> This field is required. </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('date')?.errors?.ZonedDateTimelocal">
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_poid">Poid</label>
+          <input type="number" class="form-control" name="poid" id="field_poid" data-cy="poid" formControlName="poid" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_taille">Taille</label>
+          <input type="number" class="form-control" name="taille" id="field_taille" data-cy="taille" formControlName="taille" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_pas">Pas</label>
+          <input type="number" class="form-control" name="pas" id="field_pas" data-cy="pas" formControlName="pas" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_pad">Pad</label>
+          <input type="number" class="form-control" name="pad" id="field_pad" data-cy="pad" formControlName="pad" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_pouls">Pouls</label>
+          <input type="number" class="form-control" name="pouls" id="field_pouls" data-cy="pouls" formControlName="pouls" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_temp">Temp</label>
+          <input type="number" class="form-control" name="temp" id="field_temp" data-cy="temp" formControlName="temp" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_glycemie">Glycemie</label>
+          <input type="number" class="form-control" name="glycemie" id="field_glycemie" data-cy="glycemie" formControlName="glycemie" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_cholesterol">Cholesterol</label>
+          <input
+            type="number"
+            class="form-control"
+            name="cholesterol"
+            id="field_cholesterol"
+            data-cy="cholesterol"
+            formControlName="cholesterol"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_patient">Patient</label>
+          <select class="form-control" id="field_patient" data-cy="patient" name="patient" formControlName="patient">
+            <option *ngIf="!editForm.get('patient')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="patientOption.id === editForm.get('patient')!.value?.id ? editForm.get('patient')!.value : patientOption"
+              *ngFor="let patientOption of patientsSharedCollection; trackBy: trackPatientById"
+            >
+              {{ patientOption.id }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['patient'])!.invalid && (editForm.get(['patient'])!.dirty || editForm.get(['patient'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['patient'])?.errors?.required"> This field is required. </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

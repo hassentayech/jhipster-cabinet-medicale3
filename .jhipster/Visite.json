@@ -1,0 +1,82 @@
+{
+  "name": "Visite",
+  "fields": [
+    {
+      "fieldName": "control",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "motif",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "interrogatoire",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "examen",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "conclusion",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "honoraire",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "certificat",
+      "otherEntityRelationshipName": "visite",
+      "relationshipName": "certificat",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "crEchographie",
+      "otherEntityRelationshipName": "visite",
+      "relationshipName": "crEchographie",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "ordonnance",
+      "otherEntityRelationshipName": "visite",
+      "relationshipName": "ordonnance"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "reglement",
+      "otherEntityRelationshipName": "visite",
+      "relationshipName": "reglement"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "casTraiter",
+      "otherEntityRelationshipName": "visite",
+      "relationshipValidateRules": "required",
+      "relationshipName": "casTraiter"
+    }
+  ],
+  "entityTableName": "visite",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210830145121"
+}

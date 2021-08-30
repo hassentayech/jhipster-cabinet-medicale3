@@ -1,0 +1,170 @@
+
+entity Patient {
+    reference String required unique,
+	nom String required minlength(3),
+    prenom String required minlength(3),
+    naissance LocalDate required,
+    sexe Sexe required,
+    etatCivil EtatCivil required,
+    fonction String,
+    email String,
+    tel String required,
+    telFixe String required,
+    adresse String,
+    remarque TextBlob
+}
+enum Sexe {HOMME,FEMME}
+enum EtatCivil {
+  CELIBATAIRE, MARIE, DIVORCE, VEUF
+}
+paginate Patient with infinite-scroll
+filter Patient
+//dto Patient with mapstruct
+
+entity RendezVous {
+    date LocalDate required,
+    trancheHoraire String required,
+    nbrTranche String required,
+	motif String,
+    present Boolean,
+}
+//paginate RendezVous with pagination
+filter RendezVous
+
+
+entity Antecedent {
+    type TypeAntecedent required,
+    periode String required,
+	antecedent TextBlob required,
+    traitement TextBlob 
+}
+enum TypeAntecedent {
+  MEDICAL, CHIRURGICAL, FAMILIAL, GYNECO_OBSTETRIQUE, TOXIQUE
+}
+
+entity CasTraiter {
+    cas String required,
+    depuis LocalDate required,
+	histoire TextBlob,
+    remarques TextBlob,
+    etatActuel EtatActuel required,
+    modeFacturation ModeFacturation required,
+    prixForfaitaire Integer,
+}
+enum EtatActuel {
+  EN_TRAITEMENT, TRAITE, ADRESSE
+}
+enum ModeFacturation {
+  VISITES, ACTES, FORFAIT
+}
+
+entity Visite {
+    control Boolean,
+    date LocalDate,
+    motif String,
+    interrogatoire TextBlob,
+    examen TextBlob,
+    conclusion TextBlob,
+    honoraire Integer required,	
+}
+//dto Visite with mapstruct
+
+entity Constante {
+    date ZonedDateTime required,
+    poid Integer,
+    taille Integer,
+    pas Integer,
+    pad Integer,
+    pouls Integer,
+    temp Integer,
+    glycemie Integer,
+    cholesterol Integer,
+}
+
+entity Ordonnance {
+}
+//dto Ordonnance with mapstruct
+
+entity Reglement {
+date ZonedDateTime required,
+valeur Integer required,
+typePayement TypePayement required,
+remarque String
+}
+enum TypePayement {
+  CAISSE, CHEQUE, OFFERT
+}
+//paginate Reglement with pagination
+
+entity Certificat {
+nbrJours Integer required,
+description String
+}
+
+entity CrEchographie {
+aspectFoie EchoAspect,
+observationFoie String,
+aspectVesicule EchoAspect,
+observationVesicule String,
+aspectTrocVoieVeine EchoAspect,
+observationTrocVoieVeine String,
+aspectReins EchoAspect,
+observationReins String,
+aspectRate EchoAspect,
+observationRate String,
+aspectPancreas EchoAspect,
+observationPancreas String,
+autreObservation String,
+}
+enum EchoAspect {
+  TAILLE_ECHOSTRUCURE_NORMALE, TAILLE_AUGMENTEE, DIFFICILE_VISUALISER, ANORMALITE
+}
+
+
+entity Prescription {
+prescription String required,
+prise String,
+}
+
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany { 
+
+    Patient{rendezVous}  to RendezVous{patient required},
+    Patient{casTraiter}  to CasTraiter{patient required},
+    Patient{constante}  to Constante{patient required},
+    Patient{antecedent}  to Antecedent{patient required},
+    
+    CasTraiter{visite}  to Visite{casTraiter required},
+    
+    Visite{ordonnance}  to Ordonnance{Visite required},
+    Visite{reglement}  to Reglement{Visite required},
+
+    Ordonnance{prescription}  to Prescription{ordonnance required},
+}
+
+relationship OneToOne { 
+Visite{certificat}  to Certificat{visite required},
+Visite{crEchographie}  to CrEchographie{visite required},
+
+}
+
+
+service * with serviceClass
+//filter all
+
+
+/*
+///////////////////////////////////////////////////////////////////
+	nom String  required unique minlength(3),
+    dateNaissance LocalDate,
+    image ImageBlob,
+    nombrePlace Integer min(1),
+  soundRep Blob,
+  qcm Boolean,
+
+paginate Matiere with infinite-scroll
+paginate Niveau with pagination
+dto ** with mapstruct
+*/
+

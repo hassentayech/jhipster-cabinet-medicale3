@@ -1,0 +1,61 @@
+{
+  "name": "Constante",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "poid",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "taille",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "pas",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "pad",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "pouls",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "temp",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "glycemie",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "cholesterol",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "patient",
+      "otherEntityRelationshipName": "constante",
+      "relationshipValidateRules": "required",
+      "relationshipName": "patient"
+    }
+  ],
+  "entityTableName": "constante",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210830145122"
+}

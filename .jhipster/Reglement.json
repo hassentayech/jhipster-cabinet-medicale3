@@ -1,0 +1,44 @@
+{
+  "name": "Reglement",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "valeur",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "typePayement",
+      "fieldType": "TypePayement",
+      "fieldValues": "CAISSE,CHEQUE,OFFERT",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "remarque",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "visite",
+      "otherEntityRelationshipName": "reglement",
+      "relationshipValidateRules": "required",
+      "relationshipName": "visite"
+    }
+  ],
+  "entityTableName": "reglement",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210830145124"
+}

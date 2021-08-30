@@ -1,0 +1,80 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="crEchographie">
+      <h2 data-cy="crEchographieDetailsHeading"><span>Cr Echographie</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ crEchographie.id }}</span>
+        </dd>
+        <dt><span>Aspect Foie</span></dt>
+        <dd>
+          <span>{{ crEchographie.aspectFoie }}</span>
+        </dd>
+        <dt><span>Observation Foie</span></dt>
+        <dd>
+          <span>{{ crEchographie.observationFoie }}</span>
+        </dd>
+        <dt><span>Aspect Vesicule</span></dt>
+        <dd>
+          <span>{{ crEchographie.aspectVesicule }}</span>
+        </dd>
+        <dt><span>Observation Vesicule</span></dt>
+        <dd>
+          <span>{{ crEchographie.observationVesicule }}</span>
+        </dd>
+        <dt><span>Aspect Troc Voie Veine</span></dt>
+        <dd>
+          <span>{{ crEchographie.aspectTrocVoieVeine }}</span>
+        </dd>
+        <dt><span>Observation Troc Voie Veine</span></dt>
+        <dd>
+          <span>{{ crEchographie.observationTrocVoieVeine }}</span>
+        </dd>
+        <dt><span>Aspect Reins</span></dt>
+        <dd>
+          <span>{{ crEchographie.aspectReins }}</span>
+        </dd>
+        <dt><span>Observation Reins</span></dt>
+        <dd>
+          <span>{{ crEchographie.observationReins }}</span>
+        </dd>
+        <dt><span>Aspect Rate</span></dt>
+        <dd>
+          <span>{{ crEchographie.aspectRate }}</span>
+        </dd>
+        <dt><span>Observation Rate</span></dt>
+        <dd>
+          <span>{{ crEchographie.observationRate }}</span>
+        </dd>
+        <dt><span>Aspect Pancreas</span></dt>
+        <dd>
+          <span>{{ crEchographie.aspectPancreas }}</span>
+        </dd>
+        <dt><span>Observation Pancreas</span></dt>
+        <dd>
+          <span>{{ crEchographie.observationPancreas }}</span>
+        </dd>
+        <dt><span>Autre Observation</span></dt>
+        <dd>
+          <span>{{ crEchographie.autreObservation }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/cr-echographie', crEchographie.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
